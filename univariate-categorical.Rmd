@@ -57,7 +57,7 @@ library(gt)
 
 ### 막대그래프 {#uni-cat-barplot}
  
-```{r 성별-table-barplot}
+```{r sex-table-barplot}
 library(gt)
 
 성별_tbl_cnt <- 성별_tbl %>% 
@@ -75,7 +75,7 @@ library(gt)
 
 ### 원그래프 {#uni-cat-pie}
 
-```{r 성별-table-pie-dotplot}
+```{r sex-table-pie-dotplot}
 성별_tbl_cnt %>% 
     ggplot(aes(x = "", y=명수, fill = 성별)) +
       geom_bar(width = 1, stat = "identity", color = "white") +
@@ -92,7 +92,7 @@ library(gt)
 
 ### 와플 그래프 {#uni-cat-waffle}
 
-```{r 성별-table-waffle}
+```{r sex-table-waffle}
 library(waffle)
 
 성별_tbl_cnt %>% 
@@ -107,7 +107,7 @@ library(waffle)
 
 ### 이미지 그래프 {#uni-cat-image}
 
-```{r 성별-table-이미지}
+```{r sex-table-이미지}
 library(ggtextures) # devtools::install_github("clauswilke/ggtextures")
 library(rsvg)
 library(magick)
