@@ -1,0 +1,14 @@
+name: "pkg_doc"
+title: "오픈 통계 팩키지"
+description: |
+  오픈 통계 팩키지 주요 기능에 대해 문서로 제작합니다.
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "시각화"
+      href: viz.html
+output: distill::distill_article

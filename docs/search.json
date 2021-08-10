@@ -1,0 +1,29 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-08-10T12:46:27+09:00"
+    },
+    {
+      "path": "index.html",
+      "title": "오픈통계 팩키지 문서",
+      "description": "오픈통계 팩키지 Feature에 대한 기본 내용을 정리합니다.\n",
+      "author": [],
+      "contents": "\n데이터 팩키지\nstatdata\n오픈 통계 팩키지\nGitHub 저장소 - TBA\n\n\n\n",
+      "last_modified": "2021-08-10T12:46:27+09:00"
+    },
+    {
+      "path": "viz.html",
+      "title": "시각화",
+      "description": "단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다. ",
+      "author": [],
+      "contents": "\n\n\n\n",
+      "last_modified": "2021-08-10T12:46:28+09:00"
+    }
+  ],
+  "collections": []
+}

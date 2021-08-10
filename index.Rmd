@@ -1,0 +1,24 @@
+---
+title: "오픈통계 팩키지 문서"
+description: |
+  오픈통계 팩키지 Feature에 대한 기본 내용을 정리합니다.
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# Learn more about creating websites with Distill at:
+# https://rstudio.github.io/distill/website.html
+```
+
+
+# 데이터 팩키지 {#data-pkg}
+
+- [`statdata`](https://github.com/tidyverse-korea/statdata)
+
+# 오픈 통계 팩키지 {#open-pkg}
+
+GitHub 저장소 - TBA
+
+

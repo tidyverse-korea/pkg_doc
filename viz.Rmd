@@ -1,0 +1,10 @@
+---
+title: "시각화"
+description: |
+  단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다. 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
