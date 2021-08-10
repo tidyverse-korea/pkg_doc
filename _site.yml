@@ -10,7 +10,11 @@ navbar:
     - text: "About"
       href: about.html
     - text: "시각화"
-      href: viz.html
+      menu:
+      - text: "단변량 범주형 변수"
+        href: univariate-categorical.html
+      - text: "단변량 연속형 변수"
+        href: univariate-continuous.html
 output:
   distill::distill_article:
     self_contained: false

@@ -53,15 +53,9 @@ library(gt)
     gt()
 ```
 
-## 시각화 {.tabset}
+## 시각화 {#uni-categorical-viz}
 
-::: l-screen
-
-::::: {.panelset}
-
-::: {.panel}
-
-### 막대그래프 {.panel-name}
+### 막대그래프 {#uni-cat-barplot}
  
 ```{r 성별-table-barplot}
 library(gt)
@@ -79,12 +73,7 @@ library(gt)
       theme_bw(base_family = "NanumGothic")
 ```
 
-:::
-
-
-::: {.panel}
-
-### 원그래프 {.panel-name}
+### 원그래프 {#uni-cat-pie}
 
 ```{r 성별-table-pie-dotplot}
 성별_tbl_cnt %>% 
@@ -101,12 +90,7 @@ library(gt)
       labs(title = "중학교 성별 범주형 데이터")
 ```
 
-:::
-
-
-::: {.panel}
-
-### 와플 그래프 {.panel-name}
+### 와플 그래프 {#uni-cat-waffle}
 
 ```{r 성별-table-waffle}
 library(waffle)
@@ -121,11 +105,7 @@ library(waffle)
   theme_void(base_family = "NanumGothic")
 ```
 
-:::
-
-::: {.panel}
-
-### 이미지 그래프 {.panel-name}
+### 이미지 그래프 {#uni-cat-image}
 
 ```{r 성별-table-이미지}
 library(ggtextures) # devtools::install_github("clauswilke/ggtextures")
@@ -149,8 +129,3 @@ library(magick)
     
 ```
 
-:::
-
-:::::
-
-:::
