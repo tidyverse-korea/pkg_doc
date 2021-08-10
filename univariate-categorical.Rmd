@@ -107,7 +107,7 @@ library(waffle)
 
 ### 이미지 그래프 {#uni-cat-image}
 
-```{r sex-table-이미지}
+```{r sex-table-image}
 library(ggtextures) # devtools::install_github("clauswilke/ggtextures")
 library(rsvg)
 library(magick)
