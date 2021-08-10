@@ -11,4 +11,6 @@ navbar:
       href: about.html
     - text: "시각화"
       href: viz.html
-output: distill::distill_article
+output:
+  distill::distill_article:
+    self_contained: false
