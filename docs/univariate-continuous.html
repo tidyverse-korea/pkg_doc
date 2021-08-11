@@ -2099,46 +2099,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
 <div class="d-article">
-<h1 id="categorical-data">범주형 자료 - 성별</h1>
-<h2 id="성별">데이터</h2>
-<p><code>Textbook_Middle</code> → <code>025원시_성별.csv</code> 데이터를 다운로드 받아 데이터를 준비한다.</p>
+<h1 id="continuous-data">연속형 자료 - 수달의 길이</h1>
+<h2 id="수달">데이터</h2>
+<p><code>Textbook_Middle</code> → <code>031연속_수달의길이.csv</code> 데이터를 다운로드 받아 데이터를 준비한다.</p>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code># A tibble: 10 × 1
-   성별 
-   &lt;chr&gt;
- 1 남   
- 2 여   
- 3 남   
- 4 여   
- 5 남   
- 6 남   
- 7 남   
- 8 여   
- 9 여   
-10 남   </code></pre>
+<pre><code># A tibble: 30 × 1
+   수달길이
+      &lt;dbl&gt;
+ 1     63.2
+ 2     65.3
+ 3     67.6
+ 4     68.7
+ 5     69.7
+ 6     60.7
+ 7     72.4
+ 8     75.2
+ 9     64.4
+10     76.5
+# … with 20 more rows</code></pre>
 </div>
-<h2 id="성별-표">표</h2>
-<p>범주형 데이터라 “남”과 “여” 두 범주를 갖는 범주형 데이터를 요약한다. 범주형 데이터를 요약하는 가장 기본적인 방식은 표를 제작하는 것이다.</p>
-<div class="layout-chunk" data-layout="l-body">
-<pre><code># A tibble: 2 × 3
-  성별   명수  성비
-  &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;
-1 남        6    60
-2 여        4    40</code></pre>
-</div>
-<p>예쁘게 표로 표현한다.</p>
+<h2 id="basic-stats">요약 통계퍙</h2>
+<p>수달의 길와 같은 연속형 변수를 요약하는 경우 다음 통계량을 많이 사용한다.</p>
 <ul>
-<li>TO-DO: <code>gt</code> 팩키지로 예쁘게 표를 만들 필요가 있음.<br />
-</li>
-<li>TO-DO: 행과 열을 전치하여 표를 제작하는 것도 필요함.</li>
+<li>중심값: 평균/중위수</li>
+<li>퍼짐: 분산/표준편차</li>
+<li>극단값: 최대/최소</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<div id="joqsggfmjf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wyewggwdty" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#joqsggfmjf .gt_table {
+#wyewggwdty .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2163,7 +2156,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-left-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_heading {
+#wyewggwdty .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2175,7 +2168,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_title {
+#wyewggwdty .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2185,7 +2178,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-width: 0;
 }
 
-#joqsggfmjf .gt_subtitle {
+#wyewggwdty .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2195,13 +2188,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-width: 0;
 }
 
-#joqsggfmjf .gt_bottom_border {
+#wyewggwdty .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_col_headings {
+#wyewggwdty .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2216,7 +2209,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_col_heading {
+#wyewggwdty .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2236,7 +2229,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#joqsggfmjf .gt_column_spanner_outer {
+#wyewggwdty .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2248,15 +2241,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 4px;
 }
 
-#joqsggfmjf .gt_column_spanner_outer:first-child {
+#wyewggwdty .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#joqsggfmjf .gt_column_spanner_outer:last-child {
+#wyewggwdty .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#joqsggfmjf .gt_column_spanner {
+#wyewggwdty .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2268,7 +2261,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   width: 100%;
 }
 
-#joqsggfmjf .gt_group_heading {
+#wyewggwdty .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2290,7 +2283,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#joqsggfmjf .gt_empty_group_heading {
+#wyewggwdty .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2305,15 +2298,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   vertical-align: middle;
 }
 
-#joqsggfmjf .gt_from_md > :first-child {
+#wyewggwdty .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#joqsggfmjf .gt_from_md > :last-child {
+#wyewggwdty .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#joqsggfmjf .gt_row {
+#wyewggwdty .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2332,7 +2325,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   overflow-x: hidden;
 }
 
-#joqsggfmjf .gt_stub {
+#wyewggwdty .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2344,7 +2337,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-left: 12px;
 }
 
-#joqsggfmjf .gt_summary_row {
+#wyewggwdty .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2354,7 +2347,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#joqsggfmjf .gt_first_summary_row {
+#wyewggwdty .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2364,7 +2357,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_grand_summary_row {
+#wyewggwdty .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2374,7 +2367,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   padding-right: 5px;
 }
 
-#joqsggfmjf .gt_first_grand_summary_row {
+#wyewggwdty .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2384,11 +2377,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-top-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_striped {
+#wyewggwdty .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#joqsggfmjf .gt_table_body {
+#wyewggwdty .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2397,7 +2390,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-bottom-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_footnotes {
+#wyewggwdty .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2411,13 +2404,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_footnote {
+#wyewggwdty .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#joqsggfmjf .gt_sourcenotes {
+#wyewggwdty .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2431,41 +2424,41 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   border-right-color: #D3D3D3;
 }
 
-#joqsggfmjf .gt_sourcenote {
+#wyewggwdty .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#joqsggfmjf .gt_left {
+#wyewggwdty .gt_left {
   text-align: left;
 }
 
-#joqsggfmjf .gt_center {
+#wyewggwdty .gt_center {
   text-align: center;
 }
 
-#joqsggfmjf .gt_right {
+#wyewggwdty .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#joqsggfmjf .gt_font_normal {
+#wyewggwdty .gt_font_normal {
   font-weight: normal;
 }
 
-#joqsggfmjf .gt_font_bold {
+#wyewggwdty .gt_font_bold {
   font-weight: bold;
 }
 
-#joqsggfmjf .gt_font_italic {
+#wyewggwdty .gt_font_italic {
   font-style: italic;
 }
 
-#joqsggfmjf .gt_super {
+#wyewggwdty .gt_super {
   font-size: 65%;
 }
 
-#joqsggfmjf .gt_footnote_marks {
+#wyewggwdty .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2475,40 +2468,436 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">성별</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">명수</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">성비</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">통계량</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">값</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">남</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">60</td></tr>
-    <tr><td class="gt_row gt_left">여</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">40</td></tr>
+    <tr><td class="gt_row gt_left">mean</td>
+<td class="gt_row gt_right">69.313333</td></tr>
+    <tr><td class="gt_row gt_left">sd</td>
+<td class="gt_row gt_right">4.389543</td></tr>
+    <tr><td class="gt_row gt_left">p0</td>
+<td class="gt_row gt_right">60.700000</td></tr>
+    <tr><td class="gt_row gt_left">p25</td>
+<td class="gt_row gt_right">67.300000</td></tr>
+    <tr><td class="gt_row gt_left">p50</td>
+<td class="gt_row gt_right">69.000000</td></tr>
+    <tr><td class="gt_row gt_left">p75</td>
+<td class="gt_row gt_right">72.050000</td></tr>
+    <tr><td class="gt_row gt_left">p100</td>
+<td class="gt_row gt_right">78.100000</td></tr>
   </tbody>
   
   
 </table>
 </div>
 </div>
-<h2 id="uni-categorical-viz">시각화</h2>
-<h3 id="uni-cat-barplot">막대그래프</h3>
+<p>예쁘게 표로 표현한다.</p>
+<ul>
+<li>TO-DO: <code>gt</code> 팩키지로 예쁘게 표를 만들 필요가 있음.<br />
+</li>
+<li>TO-DO: 행과 열을 전치하여 표를 제작하는 것도 필요함.</li>
+</ul>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot-1.png" width="624" /></p>
+<div id="cfroobycaq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cfroobycaq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cfroobycaq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cfroobycaq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cfroobycaq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cfroobycaq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cfroobycaq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cfroobycaq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cfroobycaq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cfroobycaq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cfroobycaq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cfroobycaq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cfroobycaq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cfroobycaq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#cfroobycaq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cfroobycaq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cfroobycaq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cfroobycaq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cfroobycaq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cfroobycaq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cfroobycaq .gt_left {
+  text-align: left;
+}
+
+#cfroobycaq .gt_center {
+  text-align: center;
+}
+
+#cfroobycaq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cfroobycaq .gt_font_normal {
+  font-weight: normal;
+}
+
+#cfroobycaq .gt_font_bold {
+  font-weight: bold;
+}
+
+#cfroobycaq .gt_font_italic {
+  font-style: italic;
+}
+
+#cfroobycaq .gt_super {
+  font-size: 65%;
+}
+
+#cfroobycaq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">통계량</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">값</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">mean</td>
+<td class="gt_row gt_right">69.3</td></tr>
+    <tr><td class="gt_row gt_left">sd</td>
+<td class="gt_row gt_right">4.4</td></tr>
+    <tr><td class="gt_row gt_left">p0</td>
+<td class="gt_row gt_right">60.7</td></tr>
+    <tr><td class="gt_row gt_left">p25</td>
+<td class="gt_row gt_right">67.3</td></tr>
+    <tr><td class="gt_row gt_left">p50</td>
+<td class="gt_row gt_right">69.0</td></tr>
+    <tr><td class="gt_row gt_left">p75</td>
+<td class="gt_row gt_right">72.0</td></tr>
+    <tr><td class="gt_row gt_left">p100</td>
+<td class="gt_row gt_right">78.1</td></tr>
+  </tbody>
+  
+  
+</table>
 </div>
-<h3 id="uni-cat-pie">원그래프</h3>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot-1.png" width="624" /></p>
 </div>
-<h3 id="uni-cat-waffle">와플 그래프</h3>
+<h2 id="uni-continuous-viz">시각화</h2>
+<h3 id="uni-cat-hist">히스토그램</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-waffle-1.png" width="624" /></p>
+<p><img src="univariate-continuous_files/figure-html5/otter-table-barplot-1.png" width="624" /></p>
 </div>
-<h3 id="uni-cat-image">이미지 그래프</h3>
+<h3 id="uni-cat-dot">점그래프 - 상대도수</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-image-1.png" width="624" /></p>
+<p><img src="univariate-continuous_files/figure-html5/otter-dotplot-1.png" width="624" /></p>
+</div>
+<h3 id="uni-cat-dot-absolute">점그래프 - 절대도수</h3>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="univariate-continuous_files/figure-html5/otter-dotplot-absolute-1.png" width="624" /></p>
+</div>
+<h3 id="uni-cat-stem-and-leaf">줄기잎 그림</h3>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>
+  The decimal point is at the |
+
+  60 | 77
+  62 | 26
+  64 | 43
+  66 | 1269
+  68 | 236773477
+  70 | 253
+  72 | 348
+  74 | 22
+  76 | 56
+  78 | 1</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="univariate-continuous_files/figure-html5/otter-stem-and-leaf-1.png" width="624" /></p>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
