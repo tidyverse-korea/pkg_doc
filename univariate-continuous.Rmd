@@ -28,7 +28,7 @@ library(tidyverse)
 수달_tbl
 ```
 
-## 요약 통계퍙 {#basic-stats}
+## 요약 통계량 {#basic-stats}
 
 수달의 길와 같은 연속형 변수를 요약하는 경우 다음 통계량을 많이 사용한다.
 
@@ -67,6 +67,22 @@ library(gt)
     ) 
 ```
 
+- One-More: dlookr 패키지와 reactable 패키지의 사용
+
+```{r 수달-table-pretty2}
+library("dlookr")
+library("reactable")
+describe(수달_tbl) %>% 
+    select(n, mean, sd, p00, p25, p50, p75, p100) %>% 
+    pivot_longer(cols = everything(), names_to = "통계량", values_to = "값") %>% 
+    reactable(
+        fullWidth = FALSE,
+        columns = list(
+            값 = colDef(format = colFormat(digits = 1))
+        )
+    )
+```
+
 ## 시각화 {#uni-continuous-viz}
 
 ### 히스토그램 {#uni-cat-hist}
@@ -80,6 +96,19 @@ library(gt)
            subtitle = "단위: 마리수",
            y = "") +
       theme_bw(base_family = "NanumGothic")
+```
+
+- One-More: hrbrthemes::theme_ipsum 테마의 사용
+
+```{r otter-table-barplot2}
+수달_tbl %>% 
+    ggplot(aes(x = 수달길이)) +
+      geom_histogram(fill = "midnightblue", binwidth = 2) +
+      labs(x = "수달 길이",
+           title = "수달 길이 연속형 데이터",
+           subtitle = "단위: 마리수",
+           y = "") +
+      hrbrthemes::theme_ipsum(base_family = "NanumSquare")
 ```
 
 ### 점그래프 - 상대도수 {#uni-cat-dot}

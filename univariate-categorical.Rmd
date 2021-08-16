@@ -53,6 +53,41 @@ library(gt)
     gt()
 ```
 
+- One-More: flextable 패키지를 이용한 심플한 출력
+
+```{r 성별-table-flextable}
+library(flextable)
+
+성별_tbl %>% 
+    count(성별, name = "명수") %>% 
+    mutate(성비 = 명수 / sum(명수) * 100) %>% 
+    flextable()
+```
+
+
+- One-More: reactable 패키지를 이용한 디테일한 출력
+
+```{r 성별-table-reactable}
+library(reactable)
+
+성별_tbl %>% 
+    count(성별, name = "명수") %>% 
+    mutate(성비 = 명수 / sum(명수)) %>% 
+    reactable(
+      fullWidth = FALSE,
+      bordered = TRUE,
+      striped = TRUE,
+      columns = list(
+        성비 = colDef(
+            format = colFormat(percent = TRUE)
+        )    
+      ),
+      theme = reactableTheme(
+        stripedColor = "#f6f8fa"
+      )  
+    )
+```
+
 ## 시각화 {#uni-categorical-viz}
 
 ### 막대그래프 {#uni-cat-barplot}
@@ -73,6 +108,20 @@ library(gt)
       theme_bw(base_family = "NanumGothic")
 ```
 
+- One-More: hrbrthemes::theme_ipsum 테마의 사용
+
+```{r sex-table-barplot2}
+성별_tbl_cnt %>% 
+    ggplot(aes(x = 성별, y=명수)) +
+      geom_col(width = 0.3, fill = "midnightblue") +
+      scale_y_continuous(limits = c(0,10), labels = scales::number_format(accuracy = 1)) +
+      labs(x = "성별",
+           y = "명수",
+           title = "중학교 성별 범주형 데이터") +
+      hrbrthemes::theme_ipsum(base_family = "NanumSquare")
+```
+
+
 ### 원그래프 {#uni-cat-pie}
 
 ```{r sex-table-pie-dotplot}
@@ -88,6 +137,29 @@ library(gt)
       scale_fill_viridis_d() +
       theme(legend.position = "bottom") +
       labs(title = "중학교 성별 범주형 데이터")
+```
+
+- One-More: hrbrthemes::theme_ipsum 테마의 사용
+
+```{r sex-table-pie-dotplot2, fig.width=6, fig.height=6}
+성별_tbl_cnt %>% 
+    ggplot(aes(x = "", y=명수, fill = 성별)) +
+    geom_bar(width = 1, stat = "identity", color = "white") +
+    coord_polar("y", start = 0) +
+    geom_text(aes(label = glue::glue("{성별} : {명수}")), 
+              position = position_stack(vjust = 0.5), 
+              family = "NanumSquare",
+              size = 10) +
+    hrbrthemes::scale_fill_ipsum() +
+    labs(title = "중학교 성별 범주형 데이터") + 
+    hrbrthemes::theme_ipsum(base_family = "NanumSquare") +
+    theme(legend.position = "bottom",
+          plot.title = element_text(hjust = 0.5),
+          axis.title.x = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.x = element_blank(),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank()) 
 ```
 
 ### 와플 그래프 {#uni-cat-waffle}
