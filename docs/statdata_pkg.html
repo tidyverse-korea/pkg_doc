@@ -86,29 +86,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>오픈 통계 팩키지: 시각화</title>
+  <title>오픈 통계 팩키지: 통계 팩키지</title>
 
-  <meta property="description" itemprop="description" content="단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다."/>
+  <meta property="description" itemprop="description" content="`statdata` 팩키지 데이터를 정리합니다."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="오픈 통계 팩키지: 시각화"/>
+  <meta property="og:title" content="오픈 통계 팩키지: 통계 팩키지"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다."/>
+  <meta property="og:description" content="`statdata` 팩키지 데이터를 정리합니다."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="오픈 통계 팩키지"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="오픈 통계 팩키지: 시각화"/>
-  <meta property="twitter:description" content="단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다."/>
+  <meta property="twitter:title" content="오픈 통계 팩키지: 통계 팩키지"/>
+  <meta property="twitter:description" content="`statdata` 팩키지 데이터를 정리합니다."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["시각화"]},{"type":"character","attributes":{},"value":["단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다. \n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["통계 팩키지"]},{"type":"character","attributes":{},"value":["`statdata` 팩키지 데이터를 정리합니다.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2039,7 +2039,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
   <link href="site_libs/panelset-0.2.4/panelset.css" rel="stylesheet" />
   <script src="site_libs/panelset-0.2.4/panelset.js"></script>
-  <link href="site_libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
   <script src="site_libs/core-js-2.5.3/shim.min.js"></script>
   <script src="site_libs/react-17.0.0/react.min.js"></script>
   <script src="site_libs/react-17.0.0/react-dom.min.js"></script>
@@ -2065,7 +2064,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"시각화","description":"단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다.","authors":[]}
+{"title":"통계 팩키지","description":"`statdata` 팩키지 데이터를 정리합니다.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2108,502 +2107,34 @@ statdata
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>시각화</h1>
+<h1>통계 팩키지</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>단변량 범주형, 연속형 변수에 대한 시각화 방법론을 정리합니다.</p></p>
+<p><p><code>statdata</code> 팩키지 데이터를 정리합니다.</p></p>
 </div>
 
 
 <div class="d-article">
-<h1 id="categorical-data">범주형 자료 - 성별</h1>
-<h2 id="성별">데이터</h2>
-<p><code>Textbook_Middle</code> → <code>025원시_성별.csv</code> 데이터를 다운로드 받아 데이터를 준비한다.</p>
+<h1 id="statdata-csv"><code>.csv</code> 데이터</h1>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code># A tibble: 10 × 1
-   성별 
-   &lt;chr&gt;
- 1 남   
- 2 여   
- 3 남   
- 4 여   
- 5 남   
- 6 남   
- 7 남   
- 8 여   
- 9 여   
-10 남   </code></pre>
+<div id="htmlwidget-48774acc605b4743b1aa" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-48774acc605b4743b1aa">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"csv":["025원시_성별","초등과학3-2그림자길이(136쪽)","초등과학3-2우리나라해역오염실태자료(104쪽)","초등과학5-2각행성의반지름(141쪽)","초등과학5-2거리-시간그래프(115쪽)","초등과학5-2교통수단(107쪽)","초등과학5-2달리기기록(105쪽)","초등과학5-2물의온도와물기둥높이(19쪽)","초등과학5-2물의온도와붕산녹는양(95쪽)","초등과학5-2물의온도와액체기둥높이(21쪽)","초등과학5-2탐구결과(173쪽)","초등과학5-2태양에서행성까지의상대적거리(143쪽)","초등과학6-2공기중에포함된여러가지기체(79쪽)","초등과학6-2국가별이산화탄소배출량(2009)(105쪽)","초등과학6-2색소의색깔에따라얼음이녹은양(168쪽)","초등과학6-2서울과대구의기온변화(44쪽)","초등과학6-2지구온난화의원인기체(84쪽)","초등과학6-2지면과수면의온도차이(33쪽)","초등사회4-2연령별인구구성비변화(116쪽)","초등사회5-2국가별도시화율변화(120쪽)","초등사회5-2대한민국수출액(119쪽)","초등사회5-2일제시대1인당쌀소비량(78쪽)","초등사회5-2일제시대쌀생산량과수탈량자료(78쪽)","초등사회5-2초고속인터넷가입자수(120쪽)","초등사회6-2개인정보침해신고건수(97쪽)","초등사회6-2쌀소비량국제비교(83쪽)","초등사회6-2우리나라농수산물의수입과수출현황(105쪽)","초등수학4-2거실의온도(익힘책116쪽)","초등수학4-2꽃나무의키(익힘책113쪽)","초등수학4-2민수의몸무게(익힘책112쪽)","초등수학4-2수면의높이(익힘책117쪽)","초등수학4-2윗몸일으키기기록(익힘책115쪽)","초등수학4-2좋아하는민속놀이(익힘책110쪽)","초등수학4-2준성이의타자연습(익힘책125쪽)","초등수학4-2지역의월별강수량(익힘책114쪽)","초등수학4-2취미종목별참가학생수(익힘책111쪽)","초등수학4-2코스모스키의변화(익힘책120쪽)","초등수학4-2프로야구관중수(익힘책124쪽)","초등수학4-2하루중최고기온(익힘책116쪽)","초등수학4-2하루중최저기온(익힘책118쪽)","초등수학4-2학생들몸무게(익힘책94쪽)","초등수학4-2학생들키(익힘책95쪽)","초등수학5-2국가별도시화율변화(익힘책120쪽)","초등수학5-2농사짓는가구수(익힘책102쪽)","초등수학5-2시간별소금양에따른실험자료(익힘책173쪽)","초등수학5-2신생아수(익힘책111쪽)","초등수학5-2월별상담실이용자수(익힘책109쪽)","초등수학5-2제기차기횟수(익힘책105쪽)","초등수학5-2진욱이의단원평가점수(익힘책108쪽)","초등수학5-2학생들의수학점수(익힘책104쪽)"]},"columns":[{"accessor":"csv","name":"csv","type":"character"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"9136c01972572aa97f40f008923e8efb","key":"9136c01972572aa97f40f008923e8efb"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
-<h2 id="성별-표">표</h2>
-<p>범주형 데이터라 “남”과 “여” 두 범주를 갖는 범주형 데이터를 요약한다. 범주형 데이터를 요약하는 가장 기본적인 방식은 표를 제작하는 것이다.</p>
+<h1 id="statdata-csv-to-pkg"><code>.csv</code> → 팩키지 데이터</h1>
 <div class="layout-chunk" data-layout="l-body">
-<pre><code># A tibble: 2 × 3
-  성별   명수  성비
-  &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;
-1 남        6    60
-2 여        4    40</code></pre>
+<div id="htmlwidget-3b870ded8062c4d99942" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-3b870ded8062c4d99942">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rda":["CO2_emissions","agro_fishery_in_out","area_monthly_precipitation","baseball_spectators_num","cosmos_height_change","counseling_user_num","country_urbanization_rate","day_highest_temp","day_lowest_temp","distance_time_graph","export_amount","expt_data_salt_hour","farming_num","favorite_folk_game","flower_tree_height","gas_in_air","gender","global_warming_gas","ground_water_temp","high_speed_internet","hobby_participating_num","ice_melt_color","jinwook_unit_score","junseong_typing_practice","kicks_num","livingroom_temps","minsu_height","newborn_num","planet_distance","planet_radius","population_age","privacy_infringement","rice_consumption_person","rice_consumption_world","rice_produced_taken","running_record","sea_pollution","search_result","seoul_daegu_temp","shadow_length","situp_record","students_height","students_math_score","students_weight","transportation","urbanization","water_height","water_temp_boric_acid","water_temp_height","water_temp_liquid_height"]},"columns":[{"accessor":"rda","name":"rda","type":"character"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"a73cc60de1fe6e113f96f4edabd2ed14","key":"a73cc60de1fe6e113f96f4edabd2ed14"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
-<p>예쁘게 표로 표현한다.</p>
-<ul>
-<li>TO-DO: <code>gt</code> 팩키지로 예쁘게 표를 만들 필요가 있음.<br />
-</li>
-<li>TO-DO: 행과 열을 전치하여 표를 제작하는 것도 필요함.</li>
-</ul>
+<h1 id="statdata-csv-to-pkg-link"><code>.csv</code> 와 <code>.rda</code> 연결</h1>
 <div class="layout-chunk" data-layout="l-body">
-<div id="otyscksnbo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-#otyscksnbo .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#otyscksnbo .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 4px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#otyscksnbo .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#otyscksnbo .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#otyscksnbo .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#otyscksnbo .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#otyscksnbo .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#otyscksnbo .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#otyscksnbo .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#otyscksnbo .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#otyscksnbo .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#otyscksnbo .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#otyscksnbo .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
-
-#otyscksnbo .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#otyscksnbo .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#otyscksnbo .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#otyscksnbo .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
-
-#otyscksnbo .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#otyscksnbo .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
-
-#otyscksnbo .gt_left {
-  text-align: left;
-}
-
-#otyscksnbo .gt_center {
-  text-align: center;
-}
-
-#otyscksnbo .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#otyscksnbo .gt_font_normal {
-  font-weight: normal;
-}
-
-#otyscksnbo .gt_font_bold {
-  font-weight: bold;
-}
-
-#otyscksnbo .gt_font_italic {
-  font-style: italic;
-}
-
-#otyscksnbo .gt_super {
-  font-size: 65%;
-}
-
-#otyscksnbo .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 65%;
-}
-</style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">성별</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">명수</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">성비</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">남</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">60</td></tr>
-    <tr><td class="gt_row gt_left">여</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">40</td></tr>
-  </tbody>
-  
-  
-</table>
+<div id="htmlwidget-cc1b82cf5a552dc8faca" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-cc1b82cf5a552dc8faca">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rda":["gender","shadow_length","sea_pollution","planet_radius","distance_time_graph","transportation","running_record","water_temp_height","water_temp_boric_acid","water_temp_liquid_height","search_result","planet_distance","gas_in_air","CO2_emissions","ice_melt_color","seoul_daegu_temp","global_warming_gas","livingroom_temps","flower_tree_height","minsu_height","water_height","situp_record","favorite_folk_game","junseong_typing_practice","area_monthly_precipitation","hobby_participating_num","cosmos_height_change","baseball_spectators_num","day_highest_temp","day_lowest_temp","students_weight","students_height","country_urbanization_rate","farming_num","expt_data_salt_hour","newborn_num","counseling_user_num","kicks_num","jinwook_unit_score","students_math_score","ground_water_temp","population_age","urbanization","export_amount","rice_consumption_person","rice_produced_taken","high_speed_internet","privacy_infringement","rice_consumption_world","agro_fishery_in_out"],"csv":["025원시_성별","초등과학3-2그림자길이(136쪽)","초등과학3-2우리나라해역오염실태자료(104쪽)","초등과학5-2각행성의반지름(141쪽)","초등과학5-2거리-시간그래프(115쪽)","초등과학5-2교통수단(107쪽)","초등과학5-2달리기기록(105쪽)","초등과학5-2물의온도와물기둥높이(19쪽)","초등과학5-2물의온도와붕산녹는양(95쪽)","초등과학5-2물의온도와액체기둥높이(21쪽)","초등과학5-2탐구결과(173쪽)","초등과학5-2태양에서행성까지의상대적거리(143쪽)","초등과학6-2공기중에포함된여러가지기체(79쪽)","초등과학6-2국가별이산화탄소배출량(2009)(105쪽)","초등과학6-2색소의색깔에따라얼음이녹은양(168쪽)","초등과학6-2서울과대구의기온변화(44쪽)","초등과학6-2지구온난화의원인기체(84쪽)","초등수학4-2거실의온도(익힘책116쪽)","초등수학4-2꽃나무의키(익힘책113쪽)","초등수학4-2민수의몸무게(익힘책112쪽)","초등수학4-2수면의높이(익힘책117쪽)","초등수학4-2윗몸일으키기기록(익힘책115쪽)","초등수학4-2좋아하는민속놀이(익힘책110쪽)","초등수학4-2준성이의타자연습(익힘책125쪽)","초등수학4-2지역의월별강수량(익힘책114쪽)","초등수학4-2취미종목별참가학생수(익힘책111쪽)","초등수학4-2코스모스키의변화(익힘책120쪽)","초등수학4-2프로야구관중수(익힘책124쪽)","초등수학4-2하루중최고기온(익힘책116쪽)","초등수학4-2하루중최저기온(익힘책118쪽)","초등수학4-2학생들몸무게(익힘책94쪽)","초등수학4-2학생들키(익힘책95쪽)","초등수학5-2국가별도시화율변화(익힘책120쪽)","초등수학5-2농사짓는가구수(익힘책102쪽)","초등수학5-2시간별소금양에따른실험자료(익힘책173쪽)","초등수학5-2신생아수(익힘책111쪽)","초등수학5-2월별상담실이용자수(익힘책109쪽)","초등수학5-2제기차기횟수(익힘책105쪽)","초등수학5-2진욱이의단원평가점수(익힘책108쪽)","초등수학5-2학생들의수학점수(익힘책104쪽)","초등과학6-2지면과수면의온도차이(33쪽)","초등사회4-2연령별인구구성비변화(116쪽)","초등사회5-2국가별도시화율변화(120쪽)","초등사회5-2대한민국수출액(119쪽)","초등사회5-2일제시대1인당쌀소비량(78쪽)","초등사회5-2일제시대쌀생산량과수탈량자료(78쪽)","초등사회5-2초고속인터넷가입자수(120쪽)","초등사회6-2개인정보침해신고건수(97쪽)","초등사회6-2쌀소비량국제비교(83쪽)","초등사회6-2우리나라농수산물의수입과수출현황(105쪽)"]},"columns":[{"accessor":"rda","name":"rda","type":"character"},{"accessor":"csv","name":"csv","type":"character"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"2f0453fe112c5142da72e335f24c3534","key":"2f0453fe112c5142da72e335f24c3534"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
-</div>
-<ul>
-<li>One-More: flextable 패키지를 이용한 심플한 출력</li>
-</ul>
+<h1 id="statdata-csv-to-pkg-check">확인</h1>
 <div class="layout-chunk" data-layout="l-body">
-<template id="bfee74b5-9bd1-4f3c-9411-66ac31ffecef"><style>
-.tabwid table{
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-spacing: 0;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-</style><div class="tabwid"><style>.cl-81b43b54{border-collapse:collapse;}.cl-81adab18{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-81adc134{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-81adc148{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-81adf92e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf942{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf94c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf956{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf957{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf960{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-81b43b54'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-81adf960"><p class="cl-81adc134"><span class="cl-81adab18">성별</span></p></td><td class="cl-81adf957"><p class="cl-81adc148"><span class="cl-81adab18">명수</span></p></td><td class="cl-81adf957"><p class="cl-81adc148"><span class="cl-81adab18">성비</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-81adf942"><p class="cl-81adc134"><span class="cl-81adab18">남</span></p></td><td class="cl-81adf92e"><p class="cl-81adc148"><span class="cl-81adab18">6</span></p></td><td class="cl-81adf92e"><p class="cl-81adc148"><span class="cl-81adab18">60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81adf94c"><p class="cl-81adc134"><span class="cl-81adab18">여</span></p></td><td class="cl-81adf956"><p class="cl-81adc148"><span class="cl-81adab18">4</span></p></td><td class="cl-81adf956"><p class="cl-81adc148"><span class="cl-81adab18">40</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="30a4611e-22db-4653-8ef7-50371b535e4c"></div>
-<script>
-var dest = document.getElementById("30a4611e-22db-4653-8ef7-50371b535e4c");
-var template = document.getElementById("bfee74b5-9bd1-4f3c-9411-66ac31ffecef");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
 
 </div>
-<ul>
-<li>One-More: reactable 패키지를 이용한 디테일한 출력</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div id="htmlwidget-a292129c55d584d5b9c9" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a292129c55d584d5b9c9">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"성별":["남","여"],"명수":[6,4],"성비":[0.6,0.4]},"columns":[{"accessor":"성별","name":"성별","type":"character"},{"accessor":"명수","name":"명수","type":"numeric"},{"accessor":"성비","name":"성비","type":"numeric","format":{"cell":{"percent":true},"aggregated":{"percent":true}}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"bordered":true,"striped":true,"inline":true,"theme":{"stripedColor":"#f6f8fa"},"dataKey":"c33e885203f69f4b5a11fdd55366fc6d","key":"c33e885203f69f4b5a11fdd55366fc6d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
-</div>
-<h2 id="uni-categorical-viz">시각화</h2>
-<h3 id="uni-cat-barplot">막대그래프</h3>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot-1.png" width="624" /></p>
-</div>
-<ul>
-<li>One-More: hrbrthemes::theme_ipsum 테마의 사용</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot2-1.png" width="624" /></p>
-</div>
-<h3 id="uni-cat-pie">원그래프</h3>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot-1.png" width="624" /></p>
-</div>
-<ul>
-<li>One-More: hrbrthemes::theme_ipsum 테마의 사용</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot2-1.png" width="576" /></p>
-</div>
-<h3 id="uni-cat-waffle">와플 그래프</h3>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-waffle-1.png" width="624" /></p>
-</div>
-<h3 id="uni-cat-image">이미지 그래프</h3>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-image-1.png" width="624" /></p>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

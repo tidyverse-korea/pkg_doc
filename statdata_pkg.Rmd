@@ -24,7 +24,8 @@ statdata_csv <- statdata_raw[str_detect(statdata_raw, "csv$")] %>%
 
 statdata_tbl <- tibble(csv = statdata_csv)
 
-# statdata_tbl
+statdata_tbl  %>% 
+  reactable::reactable()
 ```
 
 # `.csv` &rarr; 팩키지 데이터 {#statdata-csv-to-pkg}
@@ -38,7 +39,8 @@ pkg_rda <- pkg_raw %>%
 
 rda_tbl <- tibble(rda = pkg_rda)
 
-# rda_tbl
+rda_tbl  %>%
+  reactable::reactable()
 ```
 
 
@@ -60,16 +62,18 @@ csv2rda_tbl <- csv2rda_raw %>%
          csv = str_extract(csv, "(?<=extdata).*?(?=\\.csv)")) %>% 
   mutate(csv = str_remove(csv, "/")) 
 
-# csv2rda_tbl
+csv2rda_tbl %>% 
+  reactable::reactable()
 
 ```
 
 
 # 확인 {#statdata-csv-to-pkg-check}
 
-```{r}
+```{r check-pkg, eval = FALSE}
 csv2rda_tbl %>% 
   full_join(rda_tbl) %>% 
-  full_join(statdata_tbl)
+  full_join(statdata_tbl)  %>% 
+  reactable::reactable()
 ```
 
