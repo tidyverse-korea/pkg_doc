@@ -15,6 +15,10 @@ navbar:
         href: univariate-categorical.html
       - text: "단변량 연속형 변수"
         href: univariate-continuous.html
+    - text: "statdata"
+      menu:
+      - text: "statdata"
+        href: statdata_pkg.html
 output:
   distill::distill_article:
     self_contained: false

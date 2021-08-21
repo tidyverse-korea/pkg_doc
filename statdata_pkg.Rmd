@@ -1,0 +1,75 @@
+---
+title: "통계 팩키지"
+description: |
+  `statdata` 팩키지 데이터를 정리합니다.
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+xaringanExtra::use_panelset()
+```
+
+# `.csv` 데이터 {#statdata-csv}
+
+```{r tidyverse-statdata}
+library(tidyverse)
+
+statdata_raw <- fs::dir_ls("../statdata/inst/extdata/")
+
+statdata_csv <- statdata_raw[str_detect(statdata_raw, "csv$")] %>% 
+  str_remove("../statdata/inst/extdata/") %>% 
+  str_remove("\\.csv")
+
+statdata_tbl <- tibble(csv = statdata_csv)
+
+# statdata_tbl
+```
+
+# `.csv` &rarr; 팩키지 데이터 {#statdata-csv-to-pkg}
+
+```{r tidyverse-statdata-pkg}
+pkg_raw <- fs::dir_ls("../statdata/data/")
+
+pkg_rda <- pkg_raw %>% 
+  str_remove("../statdata/data/") %>% 
+  str_remove("\\.rda")
+
+rda_tbl <- tibble(rda = pkg_rda)
+
+# rda_tbl
+```
+
+
+# `.csv` 와 `.rda` 연결 {#statdata-csv-to-pkg-link}
+
+```{r tidyverse-statdata-pkg-link}
+
+csv2rda_raw <- read_lines("../statdata/data-raw/DATASET.R")
+
+csv2rda_mask <- str_detect(csv2rda_raw, pattern = "read_csv")
+
+csv2rda_raw <- csv2rda_raw[csv2rda_mask] %>% 
+  str_split(pattern = "read_csv", simplify  = TRUE) 
+
+csv2rda_tbl <- csv2rda_raw %>% 
+  as_tibble() %>% 
+  set_names(c("rda", "csv")) %>% 
+  mutate(rda = str_extract(rda, "[^\\s]*") %>% str_remove("_raw"),
+         csv = str_extract(csv, "(?<=extdata).*?(?=\\.csv)")) %>% 
+  mutate(csv = str_remove(csv, "/")) 
+
+# csv2rda_tbl
+
+```
+
+
+# 확인 {#statdata-csv-to-pkg-check}
+
+```{r}
+csv2rda_tbl %>% 
+  full_join(rda_tbl) %>% 
+  full_join(statdata_tbl)
+```
+
