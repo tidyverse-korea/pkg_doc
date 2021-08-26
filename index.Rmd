@@ -3,22 +3,155 @@ title: "오픈통계 팩키지 문서"
 description: |
   오픈통계 팩키지 Feature에 대한 기본 내용을 정리합니다.
 site: distill::distill_website
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE,
+                      comment="", digits = 3, tidy = FALSE, prompt = FALSE, fig.align = 'center')
+
 
 # Learn more about creating websites with Distill at:
 # https://rstudio.github.io/distill/website.html
 ```
 
+![](fig/openstat_architecture.png)
 
-# 데이터 팩키지 {#data-pkg}
+# 개발 저장소 {#openstat-repository}
 
-- [`statdata`](https://github.com/tidyverse-korea/statdata)
-
-# 오픈 통계 팩키지 {#open-pkg}
-
-GitHub 저장소 - TBA
+- 오픈 통계 팩키지: [`open_stat`](https://github.com/tidyverse-korea/open_stat)
+- 데이터 팩키지: [`statdata`](https://github.com/tidyverse-korea/statdata)
+- Fluent UI: [`open_stat_ui`](https://github.com/tidyverse-korea/open_stat_ui)
 
 
+# 기술 문서 {#package-doc}
+
+- [오픈 통계 팩키지 문서](https://github.com/tidyverse-korea/pkg_doc)
+
+# 데이터 팩키지: `statdata` {#openstat-data}
+
+![](https://raw.githubusercontent.com/tidyverse-korea/statdata/master/man/figures/workflow.png)
+
+# 주요 기능 {#openstat-features}
+
+초중등 교과과정을 중심으로 언급된 주요 기능을 오픈 통계 팩키지에 담아낸다.
+
+```{r openstat-features}
+library(tidyverse)
+library(readxl)
+
+middle_raw <- read_excel("data/통계패키지기능분류.xlsx", sheet = "초중등")
+high_data_raw <- read_excel("data/통계패키지기능분류.xlsx", sheet = "고등_탐색")
+high_prob_raw <- read_excel("data/통계패키지기능분류.xlsx", sheet = "고등_확률통계")
+
+middle_tbl <- middle_raw %>% 
+    fill(변량, .direction = "down") %>% 
+    mutate(기준변수 = str_remove(기준변수, "변수"),
+           추가변수 = str_remove(추가변수, "변수"))
+
+high_data_tbl <- high_data_raw %>% 
+    fill(변량, .direction = "down") %>% 
+    mutate(기준변수 = str_remove(기준변수, "변수"),
+           추가변수 = str_remove(추가변수, "변수"))
+
+high_prob_tbl <- high_prob_raw %>% 
+    fill(c(구분, 중분류), .direction = "down")
+```
+
+## 초중등 {#stat-elementary-middle}
+
+```{r elementary}
+library(gt)
+
+middle_tbl %>% 
+    group_by(변량) %>% 
+    gt() %>% 
+    tab_header(
+        title = md("&#x2600; 한국형 오픈 **통계 팩키지** &#x2600;"),
+        subtitle = "초중등 교과 주요 기능") %>% 
+    tab_spanner(
+        label = "변수(칼럼, 열)",
+        columns = c(기준변수, 추가변수)) %>% 
+    cols_align(
+        align = "center",
+        columns = everything()) %>% 
+    cols_width(
+        ends_with("변수") ~ px(100)
+      ) %>% 
+    fmt_missing(
+        columns = everything(),
+        missing_text = "") %>% 
+    tab_source_note(
+        source_note = md(
+          "**출처**: R 사용자회 및 오픈업 컨트리뷰션 아카데미")) %>% 
+    tab_options(
+        heading.background.color = "#1E61B0", # R logo 파란색
+        heading.title.font.size = "32px",
+        column_labels.background.color = "#F7F7F7", # R logo 회색 
+        column_labels.font.weight = "bold",
+        stub.background.color = "#ffffff",
+        stub.font.weight = "bold")
+```
+
+## 고등 - 데이터 탐색 {#stat-elementary-middle-eda}
+
+```{r middle-EDA}
+
+high_data_tbl %>% 
+    group_by(변량) %>% 
+    gt() %>% 
+    tab_header(
+        title = md("&#x2600; 한국형 오픈 **통계 팩키지** &#x2600;"),
+        subtitle = md("**고등 데이터 탐색** 주요 기능")) %>% 
+    tab_spanner(
+        label = "변수(칼럼, 열)",
+        columns = c(기준변수, 추가변수)) %>% 
+    cols_align(
+        align = "center",
+        columns = everything()) %>% 
+    cols_width(
+        ends_with("변수") ~ px(100)
+      ) %>% 
+    fmt_missing(
+        columns = everything(),
+        missing_text = "") %>% 
+    tab_source_note(
+        source_note = md(
+          "**출처**: R 사용자회 및 오픈업 컨트리뷰션 아카데미")) %>% 
+    tab_options(
+        heading.background.color = "#1E61B0", # R logo 파란색
+        heading.title.font.size = "32px",
+        column_labels.background.color = "#F7F7F7", # R logo 회색 
+        column_labels.font.weight = "bold",
+        stub.background.color = "#ffffff",
+        stub.font.weight = "bold")
+```
+
+## 고등 - 확률 통계 {#stat-elementary-middle-prob}
+
+```{r middle-stat-prob}
+
+high_prob_tbl %>% 
+    group_by(구분) %>% 
+    gt() %>% 
+    tab_header(
+        title = md("&#x2600; 한국형 오픈 **통계 팩키지** &#x2600;"),
+        subtitle = md("**고등 확률 통계** 주요 기능")) %>% 
+    cols_align(
+        align = "center",
+        columns = everything()) %>% 
+    fmt_missing(
+        columns = everything(),
+        missing_text = "") %>% 
+    tab_source_note(
+        source_note = md(
+          "**출처**: R 사용자회 및 오픈업 컨트리뷰션 아카데미")) %>% 
+    tab_options(
+        heading.background.color = "#1E61B0", # R logo 파란색
+        heading.title.font.size = "32px",
+        column_labels.background.color = "#F7F7F7", # R logo 회색 
+        column_labels.font.weight = "bold",
+        stub.background.color = "#ffffff",
+        stub.font.weight = "bold")
+```

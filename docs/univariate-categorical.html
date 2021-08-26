@@ -2120,6 +2120,17 @@ statdata
 <h2 id="성별">데이터</h2>
 <p><code>Textbook_Middle</code> → <code>025원시_성별.csv</code> 데이터를 다운로드 받아 데이터를 준비한다.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+
+<span class='va'>성별_raw</span> <span class='op'>&lt;-</span> <span class='fu'>read_csv</span><span class='op'>(</span><span class='st'>"data/025원시_성별.csv"</span><span class='op'>)</span>
+
+<span class='va'>성별_tbl</span> <span class='op'>&lt;-</span> <span class='va'>성별_raw</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>set_names</span><span class='op'>(</span><span class='st'>"성별"</span><span class='op'>)</span>
+
+<span class='va'>성별_tbl</span>
+</code></pre>
+</div>
 <pre><code># A tibble: 10 × 1
    성별 
    &lt;chr&gt;
@@ -2137,6 +2148,12 @@ statdata
 <h2 id="성별-표">표</h2>
 <p>범주형 데이터라 “남”과 “여” 두 범주를 갖는 범주형 데이터를 요약한다. 범주형 데이터를 요약하는 가장 기본적인 방식은 표를 제작하는 것이다.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>성별_tbl</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>count</span><span class='op'>(</span><span class='va'>성별</span>, name <span class='op'>=</span> <span class='st'>"명수"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>mutate</span><span class='op'>(</span>성비 <span class='op'>=</span> <span class='va'>명수</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>명수</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span><span class='op'>)</span>
+</code></pre>
+</div>
 <pre><code># A tibble: 2 × 3
   성별   명수  성비
   &lt;chr&gt; &lt;int&gt; &lt;dbl&gt;
@@ -2150,12 +2167,21 @@ statdata
 <li>TO-DO: 행과 열을 전치하여 표를 제작하는 것도 필요함.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<div id="otyscksnbo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+
+<span class='va'>성별_tbl</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>count</span><span class='op'>(</span><span class='va'>성별</span>, name <span class='op'>=</span> <span class='st'>"명수"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>mutate</span><span class='op'>(</span>성비 <span class='op'>=</span> <span class='va'>명수</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>명수</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div id="khgsommpol" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#otyscksnbo .gt_table {
+#khgsommpol .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2180,7 +2206,7 @@ statdata
   border-left-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_heading {
+#khgsommpol .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2192,7 +2218,7 @@ statdata
   border-right-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_title {
+#khgsommpol .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2202,7 +2228,7 @@ statdata
   border-bottom-width: 0;
 }
 
-#otyscksnbo .gt_subtitle {
+#khgsommpol .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2212,13 +2238,13 @@ statdata
   border-top-width: 0;
 }
 
-#otyscksnbo .gt_bottom_border {
+#khgsommpol .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_col_headings {
+#khgsommpol .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2233,7 +2259,7 @@ statdata
   border-right-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_col_heading {
+#khgsommpol .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2253,7 +2279,7 @@ statdata
   overflow-x: hidden;
 }
 
-#otyscksnbo .gt_column_spanner_outer {
+#khgsommpol .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2265,15 +2291,15 @@ statdata
   padding-right: 4px;
 }
 
-#otyscksnbo .gt_column_spanner_outer:first-child {
+#khgsommpol .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#otyscksnbo .gt_column_spanner_outer:last-child {
+#khgsommpol .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#otyscksnbo .gt_column_spanner {
+#khgsommpol .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2285,7 +2311,7 @@ statdata
   width: 100%;
 }
 
-#otyscksnbo .gt_group_heading {
+#khgsommpol .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2307,7 +2333,7 @@ statdata
   vertical-align: middle;
 }
 
-#otyscksnbo .gt_empty_group_heading {
+#khgsommpol .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2322,15 +2348,15 @@ statdata
   vertical-align: middle;
 }
 
-#otyscksnbo .gt_from_md > :first-child {
+#khgsommpol .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#otyscksnbo .gt_from_md > :last-child {
+#khgsommpol .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#otyscksnbo .gt_row {
+#khgsommpol .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2349,7 +2375,7 @@ statdata
   overflow-x: hidden;
 }
 
-#otyscksnbo .gt_stub {
+#khgsommpol .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2361,7 +2387,7 @@ statdata
   padding-left: 12px;
 }
 
-#otyscksnbo .gt_summary_row {
+#khgsommpol .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2371,7 +2397,7 @@ statdata
   padding-right: 5px;
 }
 
-#otyscksnbo .gt_first_summary_row {
+#khgsommpol .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2381,7 +2407,7 @@ statdata
   border-top-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_grand_summary_row {
+#khgsommpol .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2391,7 +2417,7 @@ statdata
   padding-right: 5px;
 }
 
-#otyscksnbo .gt_first_grand_summary_row {
+#khgsommpol .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2401,11 +2427,11 @@ statdata
   border-top-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_striped {
+#khgsommpol .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#otyscksnbo .gt_table_body {
+#khgsommpol .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2414,7 +2440,7 @@ statdata
   border-bottom-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_footnotes {
+#khgsommpol .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2428,13 +2454,13 @@ statdata
   border-right-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_footnote {
+#khgsommpol .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#otyscksnbo .gt_sourcenotes {
+#khgsommpol .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2448,41 +2474,41 @@ statdata
   border-right-color: #D3D3D3;
 }
 
-#otyscksnbo .gt_sourcenote {
+#khgsommpol .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#otyscksnbo .gt_left {
+#khgsommpol .gt_left {
   text-align: left;
 }
 
-#otyscksnbo .gt_center {
+#khgsommpol .gt_center {
   text-align: center;
 }
 
-#otyscksnbo .gt_right {
+#khgsommpol .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#otyscksnbo .gt_font_normal {
+#khgsommpol .gt_font_normal {
   font-weight: normal;
 }
 
-#otyscksnbo .gt_font_bold {
+#khgsommpol .gt_font_bold {
   font-weight: bold;
 }
 
-#otyscksnbo .gt_font_italic {
+#khgsommpol .gt_font_italic {
   font-style: italic;
 }
 
-#otyscksnbo .gt_super {
+#khgsommpol .gt_super {
   font-size: 65%;
 }
 
-#otyscksnbo .gt_footnote_marks {
+#khgsommpol .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -2514,7 +2540,16 @@ statdata
 <li>One-More: flextable 패키지를 이용한 심플한 출력</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<template id="bfee74b5-9bd1-4f3c-9411-66ac31ffecef"><style>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ardata-fr.github.io/flextable-book/'>flextable</a></span><span class='op'>)</span>
+
+<span class='va'>성별_tbl</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>count</span><span class='op'>(</span><span class='va'>성별</span>, name <span class='op'>=</span> <span class='st'>"명수"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>mutate</span><span class='op'>(</span>성비 <span class='op'>=</span> <span class='va'>명수</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>명수</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>100</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'><a href='https://davidgohel.github.io/flextable/reference/flextable.html'>flextable</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<template id="10884ef0-bea7-465d-bffc-75639edb1bf4"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -2548,12 +2583,12 @@ statdata
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-81b43b54{border-collapse:collapse;}.cl-81adab18{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-81adc134{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-81adc148{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-81adf92e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf942{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf94c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf956{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf957{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-81adf960{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-81b43b54'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-81adf960"><p class="cl-81adc134"><span class="cl-81adab18">성별</span></p></td><td class="cl-81adf957"><p class="cl-81adc148"><span class="cl-81adab18">명수</span></p></td><td class="cl-81adf957"><p class="cl-81adc148"><span class="cl-81adab18">성비</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-81adf942"><p class="cl-81adc134"><span class="cl-81adab18">남</span></p></td><td class="cl-81adf92e"><p class="cl-81adc148"><span class="cl-81adab18">6</span></p></td><td class="cl-81adf92e"><p class="cl-81adc148"><span class="cl-81adab18">60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-81adf94c"><p class="cl-81adc134"><span class="cl-81adab18">여</span></p></td><td class="cl-81adf956"><p class="cl-81adc148"><span class="cl-81adab18">4</span></p></td><td class="cl-81adf956"><p class="cl-81adc148"><span class="cl-81adab18">40</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="30a4611e-22db-4653-8ef7-50371b535e4c"></div>
+</style><div class="tabwid"><style>.cl-40791ec8{border-collapse:collapse;}.cl-4072f1d8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-40730862{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-40730876{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-407340b6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-407340d4{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-407340de{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-407340e8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-407340f2{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-407340fc{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-40791ec8'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-407340fc"><p class="cl-40730862"><span class="cl-4072f1d8">성별</span></p></td><td class="cl-407340f2"><p class="cl-40730876"><span class="cl-4072f1d8">명수</span></p></td><td class="cl-407340f2"><p class="cl-40730876"><span class="cl-4072f1d8">성비</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-407340d4"><p class="cl-40730862"><span class="cl-4072f1d8">남</span></p></td><td class="cl-407340b6"><p class="cl-40730876"><span class="cl-4072f1d8">6</span></p></td><td class="cl-407340b6"><p class="cl-40730876"><span class="cl-4072f1d8">60</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-407340de"><p class="cl-40730862"><span class="cl-4072f1d8">여</span></p></td><td class="cl-407340e8"><p class="cl-40730876"><span class="cl-4072f1d8">4</span></p></td><td class="cl-407340e8"><p class="cl-40730876"><span class="cl-4072f1d8">40</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="06bbd547-1583-42c5-9a95-e098be7bf760"></div>
 <script>
-var dest = document.getElementById("30a4611e-22db-4653-8ef7-50371b535e4c");
-var template = document.getElementById("bfee74b5-9bd1-4f3c-9411-66ac31ffecef");
+var dest = document.getElementById("06bbd547-1583-42c5-9a95-e098be7bf760");
+var template = document.getElementById("10884ef0-bea7-465d-bffc-75639edb1bf4");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -2571,37 +2606,155 @@ fantome.appendChild(templateContent);
 <li>One-More: reactable 패키지를 이용한 디테일한 출력</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<div id="htmlwidget-a292129c55d584d5b9c9" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a292129c55d584d5b9c9">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"성별":["남","여"],"명수":[6,4],"성비":[0.6,0.4]},"columns":[{"accessor":"성별","name":"성별","type":"character"},{"accessor":"명수","name":"명수","type":"numeric"},{"accessor":"성비","name":"성비","type":"numeric","format":{"cell":{"percent":true},"aggregated":{"percent":true}}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"bordered":true,"striped":true,"inline":true,"theme":{"stripedColor":"#f6f8fa"},"dataKey":"c33e885203f69f4b5a11fdd55366fc6d","key":"c33e885203f69f4b5a11fdd55366fc6d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://glin.github.io/reactable/'>reactable</a></span><span class='op'>)</span>
+
+<span class='va'>성별_tbl</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>count</span><span class='op'>(</span><span class='va'>성별</span>, name <span class='op'>=</span> <span class='st'>"명수"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>mutate</span><span class='op'>(</span>성비 <span class='op'>=</span> <span class='va'>명수</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>명수</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'><a href='https://glin.github.io/reactable/reference/reactable.html'>reactable</a></span><span class='op'>(</span>
+      fullWidth <span class='op'>=</span> <span class='cn'>FALSE</span>,
+      bordered <span class='op'>=</span> <span class='cn'>TRUE</span>,
+      striped <span class='op'>=</span> <span class='cn'>TRUE</span>,
+      columns <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        성비 <span class='op'>=</span> <span class='fu'><a href='https://glin.github.io/reactable/reference/colDef.html'>colDef</a></span><span class='op'>(</span>
+            format <span class='op'>=</span> <span class='fu'><a href='https://glin.github.io/reactable/reference/colFormat.html'>colFormat</a></span><span class='op'>(</span>percent <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+        <span class='op'>)</span>    
+      <span class='op'>)</span>,
+      theme <span class='op'>=</span> <span class='fu'><a href='https://glin.github.io/reactable/reference/reactableTheme.html'>reactableTheme</a></span><span class='op'>(</span>
+        stripedColor <span class='op'>=</span> <span class='st'>"#f6f8fa"</span>
+      <span class='op'>)</span>  
+    <span class='op'>)</span>
+</code></pre>
+</div>
+<div id="htmlwidget-e4a060f23867c80e4563" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e4a060f23867c80e4563">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"성별":["남","여"],"명수":[6,4],"성비":[0.6,0.4]},"columns":[{"accessor":"성별","name":"성별","type":"character"},{"accessor":"명수","name":"명수","type":"numeric"},{"accessor":"성비","name":"성비","type":"numeric","format":{"cell":{"percent":true},"aggregated":{"percent":true}}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"bordered":true,"striped":true,"inline":true,"theme":{"stripedColor":"#f6f8fa"},"dataKey":"c33e885203f69f4b5a11fdd55366fc6d","key":"c33e885203f69f4b5a11fdd55366fc6d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 <h2 id="uni-categorical-viz">시각화</h2>
 <h3 id="uni-cat-barplot">막대그래프</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+
+<span class='va'>성별_tbl_cnt</span> <span class='op'>&lt;-</span> <span class='va'>성별_tbl</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>count</span><span class='op'>(</span><span class='va'>성별</span>, name <span class='op'>=</span> <span class='st'>"명수"</span><span class='op'>)</span>
+
+<span class='va'>성별_tbl_cnt</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>성별</span>, y<span class='op'>=</span><span class='va'>명수</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>geom_col</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>0.3</span>, fill <span class='op'>=</span> <span class='st'>"midnightblue"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>scale_y_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>10</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_number.html'>number_format</a></span><span class='op'>(</span>accuracy <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"성별"</span>,
+           y <span class='op'>=</span> <span class='st'>"명수"</span>,
+           title <span class='op'>=</span> <span class='st'>"중학교 성별 범주형 데이터"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>theme_bw</span><span class='op'>(</span>base_family <span class='op'>=</span> <span class='st'>"NanumGothic"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li>One-More: hrbrthemes::theme_ipsum 테마의 사용</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot2-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>성별_tbl_cnt</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>성별</span>, y<span class='op'>=</span><span class='va'>명수</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>geom_col</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>0.3</span>, fill <span class='op'>=</span> <span class='st'>"midnightblue"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>scale_y_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>10</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_number.html'>number_format</a></span><span class='op'>(</span>accuracy <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"성별"</span>,
+           y <span class='op'>=</span> <span class='st'>"명수"</span>,
+           title <span class='op'>=</span> <span class='st'>"중학교 성별 범주형 데이터"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>hrbrthemes</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span>base_family <span class='op'>=</span> <span class='st'>"NanumSquare"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="univariate-categorical_files/figure-html5/sex-table-barplot2-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <h3 id="uni-cat-pie">원그래프</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>성별_tbl_cnt</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>, y<span class='op'>=</span><span class='va'>명수</span>, fill <span class='op'>=</span> <span class='va'>성별</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>geom_bar</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>1</span>, stat <span class='op'>=</span> <span class='st'>"identity"</span>, color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>coord_polar</span><span class='op'>(</span><span class='st'>"y"</span>, start <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='st'>"{성별} : {명수}"</span><span class='op'>)</span><span class='op'>)</span>, 
+                position <span class='op'>=</span> <span class='fu'>position_stack</span><span class='op'>(</span>vjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>, 
+                family <span class='op'>=</span> <span class='st'>"NanumGothic"</span>,
+                size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>theme_void</span><span class='op'>(</span>base_family <span class='op'>=</span> <span class='st'>"NanumGothic"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>scale_fill_viridis_d</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span>
+      <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"중학교 성별 범주형 데이터"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <ul>
 <li>One-More: hrbrthemes::theme_ipsum 테마의 사용</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot2-1.png" width="576" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>성별_tbl_cnt</span> <span class='op'>%&gt;%</span> 
+    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>, y<span class='op'>=</span><span class='va'>명수</span>, fill <span class='op'>=</span> <span class='va'>성별</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_bar</span><span class='op'>(</span>width <span class='op'>=</span> <span class='fl'>1</span>, stat <span class='op'>=</span> <span class='st'>"identity"</span>, color <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>coord_polar</span><span class='op'>(</span><span class='st'>"y"</span>, start <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>geom_text</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='st'>"{성별} : {명수}"</span><span class='op'>)</span><span class='op'>)</span>, 
+              position <span class='op'>=</span> <span class='fu'>position_stack</span><span class='op'>(</span>vjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>, 
+              family <span class='op'>=</span> <span class='st'>"NanumSquare"</span>,
+              size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>hrbrthemes</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/scale_ipsum.html'>scale_fill_ipsum</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"중학교 성별 범주형 데이터"</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'>hrbrthemes</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/hrbrthemes/man/theme_ipsum.html'>theme_ipsum</a></span><span class='op'>(</span>base_family <span class='op'>=</span> <span class='st'>"NanumSquare"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,
+          plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>,
+          axis.title.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          axis.title.y <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          axis.text.x <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          panel.grid.major <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span>,
+          panel.grid.minor <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="univariate-categorical_files/figure-html5/sex-table-pie-dotplot2-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <h3 id="uni-cat-waffle">와플 그래프</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-waffle-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gitlab.com/hrbrmstr/waffle'>waffle</a></span><span class='op'>)</span>
+
+<span class='va'>성별_tbl_cnt</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='va'>성별</span>, values<span class='op'>=</span><span class='va'>명수</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/waffle/man/geom_waffle.html'>geom_waffle</a></span><span class='op'>(</span>n_rows <span class='op'>=</span> <span class='fl'>6</span>, size <span class='op'>=</span> <span class='fl'>0.33</span>, colour <span class='op'>=</span> <span class='st'>"white"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_fill_manual</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>,
+                    values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#BA182A"</span>, <span class='st'>"#FF8288"</span><span class='op'>)</span>,
+                    labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"남자"</span>, <span class='st'>"여자"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>coord_equal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>theme_void</span><span class='op'>(</span>base_family <span class='op'>=</span> <span class='st'>"NanumGothic"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="univariate-categorical_files/figure-html5/sex-table-waffle-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <h3 id="uni-cat-image">이미지 그래프</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="univariate-categorical_files/figure-html5/sex-table-image-1.png" width="624" /></p>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>ggtextures</span><span class='op'>)</span> <span class='co'># devtools::install_github("clauswilke/ggtextures")</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jeroen/rsvg#readme'>rsvg</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://docs.ropensci.org/magick/'>magick</a></span><span class='op'>)</span>
+
+<span class='va'>성별_tbl_cnt</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>image <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+           <span class='co'># magick::image_read_svg("http://steveharoz.com/research/isotype/icons/man.svg"),</span>
+           <span class='co'># magick::image_read_svg("http://steveharoz.com/research/isotype/icons/horse.svg")</span>
+           <span class='fu'>magick</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/magick/reference/editing.html'>image_read_svg</a></span><span class='op'>(</span><span class='st'>"fig/man-svgrepo-com.svg"</span><span class='op'>)</span>,
+           <span class='fu'>magick</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/magick/reference/editing.html'>image_read_svg</a></span><span class='op'>(</span><span class='st'>"fig/woman-svgrepo-com.svg"</span><span class='op'>)</span>
+      <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>성별</span>, y<span class='op'>=</span><span class='va'>명수</span>, image <span class='op'>=</span> <span class='va'>image</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://rdrr.io/pkg/ggtextures/man/geom_isotype_bar.html'>geom_isotype_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>scale_fill_manual</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>,
+                    values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#BA182A"</span>, <span class='st'>"#FF8288"</span><span class='op'>)</span>,
+                    labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"남자"</span>, <span class='st'>"여자"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>theme_bw</span><span class='op'>(</span>base_family <span class='op'>=</span> <span class='st'>"NanumGothic"</span><span class='op'>)</span>  <span class='op'>+</span>
+      <span class='fu'>scale_y_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>10</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>scales</span><span class='fu'>::</span><span class='fu'><a href='https://scales.r-lib.org/reference/label_number.html'>number_format</a></span><span class='op'>(</span>accuracy <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="univariate-categorical_files/figure-html5/sex-table-image-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
